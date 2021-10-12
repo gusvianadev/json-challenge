@@ -6,3 +6,9 @@ h2 {
 	margin-top: 3rem;
 	text-align: left;
 }
+
+label {
+	text-align: left;
+	margin-bottom: 1rem;
+	display: block;
+}

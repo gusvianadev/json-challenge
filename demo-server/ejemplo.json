@@ -1,0 +1,117 @@
+{
+  "groups": [
+    {
+      "policyInsured": {
+        "Cobertura afectada": [
+          "DAÑO PARCIAL",
+          "DAÑO PARCIAL"
+        ],
+        "#": [
+          "1",
+          "2"
+        ],
+        "FechaOcurrencia": [
+          "17/11/2018",
+          "18/05/2016"
+        ],
+        "Motor": [
+          "K4M2842Q040131",
+          "K7MF710Q115285"
+        ],
+        "DominioChasisMotorCobertura afectada": [
+          "POR937",
+          "LPF081"
+        ],
+        "Chasis": [
+          "93Y5SRB9GGJ268542",
+          "93YBSROFHCJ316448"
+        ],
+        "Concepto": [
+          "Asegurado:DNI-25085413",
+          "Asegurado:DNI-25085413"
+        ],
+        "Entidad": [
+          "FED. PATRONAL",
+          "FED. PATRONAL"
+        ]
+      },
+      "id": 1
+    },
+    {
+      "exposurevehicles": [
+        {
+          "Cobertura afectada": [
+            "ROBO TOTAL",
+            "DAÑO PARCIAL",
+            "DAÑO PARCIAL"
+          ],
+          "#": [
+            "1",
+            "2",
+            "3"
+          ],
+          "FechaOcurrencia": [
+            "09/09/2007",
+            "09/12/2005",
+            "20/09/2002"
+          ],
+          "Motor": [
+            "8EA043169",
+            "8EA043169",
+            ""
+          ],
+          "Chasis": [
+            "9BWA37715XP004491",
+            "9BWA37715XP004491",
+            ""
+          ],
+          "Concepto": [
+            "Dominio:CJG860",
+            "Dominio:CJG860",
+            "Dominio:CJG860"
+          ],
+          "Asegurado": [
+            "DNI 18417972",
+            "DNI 18417972",
+            ""
+          ],
+          "Entidad": [
+            "SURA",
+            "CAJA GENERALES",
+            "FED. PATRONAL"
+          ]
+        }
+      ],
+      "id": 2
+    },
+    {
+      "test": {
+        "#": [
+          "1"
+        ],
+        "Cobertura afectada": [
+          "DAÑO PARCIAL"
+        ],
+        "FechaOcurrencia": [
+          "24/10/2020"
+        ],
+        "Motor": [
+          "K4M2842Q040131"
+        ],
+        "DominioChasisMotorCobertura afectada": [
+          "POR937"
+        ],
+        "Chasis": [
+          "93Y5SRB9GGJ268542"
+        ],
+        "Concepto": [
+          "Dominio:CJG860\t"
+        ],
+        "Entidad": [
+          "CAJA GENERALES"
+        ]
+      },
+      "id": 3
+    }
+  ]
+}

@@ -1,6 +1,6 @@
-import ejemplo from './ejemplo.json';
 import { useState, useEffect } from 'react';
 import './App.css';
+import Form from './Form';
 
 // esta tabla normalmente estaría en un archivo aparte para hacerlo más organizado,
 // pero por simpleza la dejo acá mismo
@@ -17,37 +17,44 @@ const table = {
 
 function App() {
 	const [updating, setUpdating] = useState(true);
+	const [demostracion, setDemostracion] = useState('');
+
+	const fetchData = async () => {
+		const res = await fetch('http://localhost:8000/groups');
+		const data = await res.json();
+		console.log(data);
+		setDemostracion(JSON.stringify(data));
+
+		data.forEach((group) => {
+			Object.entries(group).forEach((el) => {
+				if (el[0] !== 'id') {
+					const groupName = el[0];
+					const tableItems = Array.isArray(el[1]) ? el[1][0] : el[1];
+
+					Object.entries(tableItems).forEach((item) => {
+						const itemName = item[0];
+						const itemElements = item[1];
+
+						itemElements.forEach((element) => {
+							let toPush = element;
+
+							// añadir la letra al lado del numero del #
+							if (itemName === '#') {
+								toPush += groupName[0].toUpperCase();
+							}
+							// checkear si el header de la tabla existe, de lo contrario no hace nada
+							table[itemName] && table[itemName].push(toPush);
+						});
+					});
+				}
+			});
+		});
+		setUpdating(false);
+	};
 
 	useEffect(() => {
 		if (updating) {
-			// normalmente ese "ejemplo" vendría de una call a una api que me devolvería un json,
-			// así que la forma en que esto se "actualiza" es cada vez que hago
-			// una call a esa supuesta api, poniendo el estado updating a true
-			// o en otro caso, simplemente cada vez que se carga la página lo hace
-			// con los datos actualizados
-			Object.entries(ejemplo).forEach((group) => {
-				const groupName = group[0];
-				const tableItems = Array.isArray(group[1])
-					? group[1][0]
-					: group[1];
-
-				Object.entries(tableItems).forEach((item) => {
-					const itemName = item[0];
-					const itemElements = item[1];
-
-					itemElements.forEach((element) => {
-						let toPush = element;
-
-						// añadir la letra al lado del numero del #
-						if (itemName === '#') {
-							toPush += groupName[0].toUpperCase();
-						}
-						// checkear si el header de la tabla existe, de lo contrario no hace nada
-						table[itemName] && table[itemName].push(toPush);
-					});
-				});
-			});
-			setUpdating(false);
+			fetchData();
 		}
 	}, [updating]);
 
@@ -79,12 +86,13 @@ function App() {
 					))}
 				</tbody>
 			</table>
+			<h2>Añadir grupo</h2>
+			<Form setUpdating={setUpdating} />
 			<h2>
-				lo que hice con el json fue simplemente crear este objeto con
-				sus valores mejor ordenados:
+				Acá está el JSON que uso para el servidor. Cada vez que se
+				agreguen datos, esto se va a actualizar
 			</h2>
-			<p>{JSON.stringify(table)}</p>
-			<h2>el json original sigue intacto</h2>
+			{demostracion}
 		</div>
 	);
 }
