@@ -1,6 +1,6 @@
 import { useState } from 'react';
 
-const toSend = {
+let toSend = {
 	'#': [],
 	'Cobertura afectada': [],
 	FechaOcurrencia: [],
@@ -8,19 +8,33 @@ const toSend = {
 	'DominioChasisMotorCobertura afectada': [],
 	Chasis: [],
 	Concepto: [],
+	Asegurado: [],
 	Entidad: [],
 };
 
-const Form = ({ setUpdating }) => {
-	const [groupName, setGroupName] = useState('');
+const Form = ({ setUpdating, allGroups }) => {
+	const [groupName, setGroupName] = useState('policyInsured');
+	const [groupId, setGroupId] = useState(1);
 	const [groupItems, setGroupItems] = useState([]);
-	const [itemCount, setItemCount] = useState(1);
+	const [itemCount, setItemCount] = useState(2);
 
 	const handlePost = async (e) => {
-		await fetch('http://localhost:8000/groups', {
-			method: 'POST',
+		const filteredGroup = allGroups.filter(
+			(group) => group.id.toString() === groupId.toString()
+		)[0];
+
+		const groupToUpdate = Array.isArray(filteredGroup[groupName])
+			? filteredGroup[groupName][0]
+			: filteredGroup[groupName];
+
+		for (const key in groupToUpdate) {
+			groupToUpdate[key].push(...toSend[key]);
+		}
+
+		await fetch(`http://localhost:8000/groups/${groupId}`, {
+			method: 'PUT',
 			headers: { 'Content-Type': 'application/json' },
-			body: JSON.stringify({ [groupName]: toSend }),
+			body: JSON.stringify({ [groupName]: groupToUpdate }),
 		});
 
 		toSend = {
@@ -36,9 +50,9 @@ const Form = ({ setUpdating }) => {
 	};
 
 	const addGroupItem = () => {
-		const itemId = itemCount - 1;
+		const itemId = groupItems.length;
 
-		toSend['#'].push(itemCount.toString());
+		toSend['#'].push((itemCount + 1).toString());
 		Object.entries(toSend).forEach(
 			(entry) => entry[0] !== '#' && entry[1].push('')
 		);
@@ -79,6 +93,17 @@ const Form = ({ setUpdating }) => {
 								type="text"
 								id={`motor-${itemCount}`}
 								name={`Motor-${itemCount}`}
+								onChange={(e) =>
+									(toSend.Motor[itemId] = e.target.value)
+								}
+							/>
+						</label>
+						<label htmlFor={`asegurado-${itemCount}`}>
+							asegurado:{' '}
+							<input
+								type="text"
+								id={`asegurado-${itemCount}`}
+								name={`Asegurado-${itemCount}`}
 								onChange={(e) =>
 									(toSend.Motor[itemId] = e.target.value)
 								}
@@ -139,15 +164,40 @@ const Form = ({ setUpdating }) => {
 
 	return (
 		<form onSubmit={handlePost}>
-			<label htmlFor="group-name">
-				nombre del grupo:{' '}
-				<input
-					type="text"
-					id="group-name"
-					name="group-name"
-					onChange={(e) => setGroupName(e.target.value)}
-				/>
-			</label>
+			<select
+				name="group-name"
+				id="group-name"
+				onClick={(e) => {
+					const currentId =
+						e.target.options[e.target.options.selectedIndex].value;
+					const currentGroupName =
+						e.target.options[e.target.options.selectedIndex]
+							.innerText;
+					const groupItemCount = allGroups.filter(
+						(group) => group.id.toString() === currentId
+					)[0][currentGroupName];
+					const hash = (
+						Array.isArray(groupItemCount)
+							? groupItemCount[0]
+							: groupItemCount
+					)['#'];
+					setItemCount(parseInt(hash[hash.length - 1]));
+					setGroupName(currentGroupName);
+					setGroupId(currentId);
+				}}
+			>
+				{allGroups &&
+					allGroups.map((group) => {
+						return (
+							<option
+								key={Object.keys(group)[0]}
+								value={Object.values(group)[1]}
+							>
+								{Object.keys(group)[0]}
+							</option>
+						);
+					})}
+			</select>
 			{groupItems.map((item, itemIndex) => (
 				<div key={`group item number ${itemIndex + 1}`}>
 					{item.form}

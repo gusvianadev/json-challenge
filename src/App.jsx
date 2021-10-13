@@ -18,11 +18,13 @@ const table = {
 function App() {
 	const [updating, setUpdating] = useState(true);
 	const [demostracion, setDemostracion] = useState('');
+	const [allGroups, setAllGroups] = useState(null);
 
 	const fetchData = async () => {
 		const res = await fetch('http://localhost:8000/groups');
 		const data = await res.json();
 		console.log(data);
+		setAllGroups(data);
 		setDemostracion(JSON.stringify(data));
 
 		data.forEach((group) => {
@@ -87,7 +89,7 @@ function App() {
 				</tbody>
 			</table>
 			<h2>Añadir grupo</h2>
-			<Form setUpdating={setUpdating} />
+			<Form setUpdating={setUpdating} allGroups={allGroups} />
 			<h2>
 				Acá está el JSON que uso para el servidor. Cada vez que se
 				agreguen datos, esto se va a actualizar

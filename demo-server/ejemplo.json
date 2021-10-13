@@ -4,114 +4,123 @@
       "policyInsured": {
         "Cobertura afectada": [
           "DAÑO PARCIAL",
-          "DAÑO PARCIAL"
+          "DAÑO PARCIAL",
+          "DAÑO TEST",
+          "DAÑO TEST",
+          "DAÑO TEST"
         ],
         "#": [
           "1",
-          "2"
+          "2",
+          "3",
+          "3",
+          "4"
         ],
         "FechaOcurrencia": [
           "17/11/2018",
-          "18/05/2016"
+          "18/05/2016",
+          "FECHA TEST",
+          "FECHA TEST",
+          "FECHA TEST"
         ],
         "Motor": [
           "K4M2842Q040131",
-          "K7MF710Q115285"
+          "K7MF710Q115285",
+          "ASEGURADO TEST",
+          "ASEGURADO TEST",
+          "ASEGURADO TEST"
         ],
         "DominioChasisMotorCobertura afectada": [
           "POR937",
-          "LPF081"
+          "LPF081",
+          "DOMINIO TEST",
+          "DOMINIO TEST",
+          "DOMINIO TEST"
         ],
         "Chasis": [
           "93Y5SRB9GGJ268542",
-          "93YBSROFHCJ316448"
+          "93YBSROFHCJ316448",
+          "CHASIS TEST",
+          "CHASIS TEST",
+          "CHASIS TEST"
         ],
         "Concepto": [
           "Asegurado:DNI-25085413",
-          "Asegurado:DNI-25085413"
+          "Asegurado:DNI-25085413",
+          "CONCEPTO TEST",
+          "CONCEPTO TEST",
+          "CONCEPTO TEST"
         ],
         "Entidad": [
           "FED. PATRONAL",
-          "FED. PATRONAL"
+          "FED. PATRONAL",
+          "ENTIDAD TEST",
+          "ENTIDAD TEST",
+          "ENTIDAD TEST"
         ]
       },
       "id": 1
     },
     {
-      "exposurevehicles": [
-        {
-          "Cobertura afectada": [
-            "ROBO TOTAL",
-            "DAÑO PARCIAL",
-            "DAÑO PARCIAL"
-          ],
-          "#": [
-            "1",
-            "2",
-            "3"
-          ],
-          "FechaOcurrencia": [
-            "09/09/2007",
-            "09/12/2005",
-            "20/09/2002"
-          ],
-          "Motor": [
-            "8EA043169",
-            "8EA043169",
-            ""
-          ],
-          "Chasis": [
-            "9BWA37715XP004491",
-            "9BWA37715XP004491",
-            ""
-          ],
-          "Concepto": [
-            "Dominio:CJG860",
-            "Dominio:CJG860",
-            "Dominio:CJG860"
-          ],
-          "Asegurado": [
-            "DNI 18417972",
-            "DNI 18417972",
-            ""
-          ],
-          "Entidad": [
-            "SURA",
-            "CAJA GENERALES",
-            "FED. PATRONAL"
-          ]
-        }
-      ],
-      "id": 2
-    },
-    {
-      "test": {
-        "#": [
-          "1"
-        ],
+      "exposurevehicles": {
         "Cobertura afectada": [
-          "DAÑO PARCIAL"
+          "ROBO TOTAL",
+          "DAÑO PARCIAL",
+          "DAÑO PARCIAL",
+          "DAÑO TEST",
+          "DAÑO TEST"
+        ],
+        "#": [
+          "1",
+          "2",
+          "3",
+          "4",
+          "5"
         ],
         "FechaOcurrencia": [
-          "24/10/2020"
+          "09/09/2007",
+          "09/12/2005",
+          "20/09/2002",
+          "FECHA TEST",
+          "FECHA TEST"
         ],
         "Motor": [
-          "K4M2842Q040131"
-        ],
-        "DominioChasisMotorCobertura afectada": [
-          "POR937"
+          "8EA043169",
+          "8EA043169",
+          "",
+          "ASEGURADO TEST",
+          "ASEGURADO TEST"
         ],
         "Chasis": [
-          "93Y5SRB9GGJ268542"
+          "9BWA37715XP004491",
+          "9BWA37715XP004491",
+          "",
+          "CHASIS TEST",
+          "CHASIS TEST"
         ],
         "Concepto": [
-          "Dominio:CJG860\t"
+          "Dominio:CJG860",
+          "Dominio:CJG860",
+          "Dominio:CJG860",
+          "CONCEPTO TEST",
+          "CONCEPTO TEST"
+        ],
+        "Asegurado": [
+          "DNI 18417972",
+          "DNI 18417972",
+          "",
+          "",
+          ""
         ],
         "Entidad": [
-          "CAJA GENERALES"
+          "SURA",
+          "CAJA GENERALES",
+          "FED. PATRONAL",
+          "ENTIDAD TEST",
+          "ENTIDAD TEST"
         ]
       },
-      "id": 3
+      "id": 2
     }
   ]
 }
